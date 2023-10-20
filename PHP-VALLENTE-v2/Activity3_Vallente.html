@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PHP Activity 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-primary"> 
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" href="#">VALLENTE POS</a> 
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active text-white" aria-current="page" href="#">Manage</a>
+                    <a class="nav-link text-white" href="#">Menu</a> 
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <h1>Create Menu</h1>
+        <form method="POST" action="process.php" onsubmit="return validateForm()">
+            <div class="mb-3">
+                <label for="menu_name" class="form-label">Menu Name</label>
+                <input type="text" class="form-control" id="menu_name" name="menu_name">
+            </div>
+            <div class="mb-3">
+                <label for "menu_description" class="form-label">Menu Description</label>
+                <input type="text" class="form-control" id="menu_description" name="menu_description">
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary" id="liveAlertBtn">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="liveAlertPlaceholder"></div>
+
+    <div class="alert alert-danger" role="alert" style="display: none" id="validationAlert">
+        Menu Name and Menu Description cannot be empty.
+    </div>
+
+    <script>
+        function validateForm() {
+            const menuName = document.getElementById('menu_name').value;
+            const menuDescription = document.getElementById('menu_description').value;
+
+            if (menuName.trim() === '' || menuDescription.trim() === '') {
+                document.getElementById('validationAlert').style.display = 'block';
+                return false; // Prevent form submission
+            } else {
+                document.getElementById('validationAlert').style.display = 'none';
+                return true; // Allow form submission
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
